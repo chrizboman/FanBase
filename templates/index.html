@@ -20,7 +20,7 @@
 $(document).ready(function() {
     $('#turnOnBtn').on('click', function(e){
         $.ajax({
-            url: '/fan?status=on',
+            url: '/fan/?status=on',
             method: 'GET',
             success: function(result) {
                 console.log(result);
@@ -31,7 +31,7 @@ $(document).ready(function() {
     
     $('#turnOffBtn').on('click', function(e){
         $.ajax({
-            url: '/fan?status=off',
+            url: '/fan/?status=off',
             method: 'GET',
             success: function(result) {
                 console.log(result);
