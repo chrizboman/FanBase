@@ -1,13 +1,14 @@
 from os import stat
 from flask import Flask, render_template, request, jsonify, send_from_directory
 import json, os
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 
 app = Flask(__name__)
 #app.config["DEBUG"] = True
-# GPIO.setmode(GPIO.BCM)
-# GPIO.setwarnings(False)
-# GPIO.setup(18, GPIO.OUT)
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+GPIO.setup(18, GPIO.OUT)
+
 status = None
 
 @app.route('/', methods=['GET'])
@@ -23,9 +24,11 @@ def toggle():
 
 	if status == 'off':
 		print("could do off code")
+		GPIO.output(12, GPIO.LOW)
 
 	elif status == 'on':
 		print("and now some on code")
+		GPIO.output(12, GPIO.HIGH)
 
 	return jsonify({"message": "Led successfully turned on" + str(status)})
 
