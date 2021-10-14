@@ -24,11 +24,11 @@ def toggle():
 
 	if status == 'off':
 		print("could do off code") 
-		GPIO.output(18, GPIO.LOW) #this is the first output pin on rpi
+		GPIO.output(18, GPIO.HIGH) #this is the first output pin on rpi
 
 	elif status == 'on':
 		print("and now some on code")
-		GPIO.output(18, GPIO.HIGH)
+		GPIO.output(18, GPIO.LOW)
 
 	return jsonify({"message": "Led successfully turned on" + str(status)})
 
